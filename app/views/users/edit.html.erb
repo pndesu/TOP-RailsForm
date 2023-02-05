@@ -1,5 +1,10 @@
 <h1> Editting </h1>
 
+<% flash.each do |type, msg| %>
+  <div style="color:blue">
+    <%= msg %>
+  </div>
+<% end %>
 
 <% if @user.errors.any? %>
     <h2>Errors:</h2>
