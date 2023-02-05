@@ -1,0 +1,21 @@
+<h1> Editting </h1>
+
+
+<% if @user.errors.any? %>
+    <h2>Errors:</h2>
+    <ul>
+    <%@user.errors.each do |error|%>
+        <li><%= error.full_message %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @user do |form|%>
+<%= form.label :username %>
+<%= form.text_field :username, options = {placeholder: "pndesu"} %>
+<%= form.label :email %>
+<%= form.email_field :email, options = {placeholder: "abcxyz@yahoo.com"} %>
+<%= form.label :password %>
+<%= form.password_field :password %>
+<%= form.submit %>
+<% end %>

@@ -1,1 +1,44 @@
-<h1> Hello World! </h1>
+<h1> Creating </h1>
+<%# <form action="/users" method="POST" accept-charset="UTF-8">
+    <label for="username">Username: </label>
+    <input type="text" name="user[username]" id="username">
+    <label for="email">Email: </label>
+    <input type="text" name="user[email]" id="email">
+    <label for="password">Password: </label>
+    <input type="password" name="user[password]" id="password">
+    <button type="submit">Submit</button>
+</form> %>
+
+<%# <%= form_tag('/users')%>
+<%# <%= label_tag 'username'%>
+<%# <%= text_field_tag 'username'%>
+<%# <%= label_tag 'email'%>
+<%# <%= email_field_tag 'email'%>
+<%# <%= label_tag 'password'%>
+<%# <%= password_field_tag 'password'%>
+<%# <%= submit_tag 'Submit' %>
+
+<% flash.each do |type, msg| %>
+  <div style="color:blue">
+    <%= msg %>
+  </div>
+<% end %>
+
+<% if @user.errors.any? %>
+    <h2>Errors:</h2>
+    <ul>
+    <%@user.errors.each do |error|%>
+        <li><%= error.full_message %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @user do |form|%>
+<%= form.label :username %>
+<%= form.text_field :username, options = {placeholder: "pndesu"} %>
+<%= form.label :email %>
+<%= form.email_field :email, options = {placeholder: "abcxyz@yahoo.com"} %>
+<%= form.label :password %>
+<%= form.password_field :password %>
+<%= form.submit %>
+<% end %>
